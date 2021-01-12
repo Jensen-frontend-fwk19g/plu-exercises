@@ -20,3 +20,16 @@ it('parameter to store should not be undefined', () => {
 	let actual = retrieve();
 	expect(actual).toBe(input);
 })
+
+it('should save the value when store is called', () => {
+	// arrange
+	const input = 'lilja';
+	const expected = input;
+
+	// act
+	store(input);
+	let actual = retrieve();
+
+	// assert
+	expect(actual).toBe(expected);
+})
