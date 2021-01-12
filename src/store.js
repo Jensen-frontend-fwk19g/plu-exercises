@@ -1,6 +1,12 @@
+let savedValue;
 
-function store() {}
+function store(value) {
+	if( value !== undefined )
+		savedValue = value;
+}
 
-function retrieve() {}
+function retrieve() {
+	return savedValue;
+}
 
 module.exports = { store, retrieve };
