@@ -1,3 +1,7 @@
+let data = {
+	origin: undefined
+};
+
 /* 5a. Attempts to define the user's current location. The
 * parameter must be a non-empty string. Returns true if successful.
 */
@@ -5,7 +9,11 @@ function setOrigin(origin) {
 	if( (typeof origin) != 'string' || origin == '' ) {
 		return false;
 	}
+	data.origin = origin;
 	return true;
+}
+function resetOrigin() {
+	data.origin = undefined;
 }
 
 /* 5b. Attempts to book a trip (buy a ticket) to the destination.
@@ -26,7 +34,11 @@ function setOrigin(origin) {
 * has been made, the position is equal to origin. After a
 * trip it is equal to destination. May throw an exception.
 */
-// getPosition();
+function getPosition() {
+	if( data.origin === undefined )
+		throw new Error('You must call setOrigin first');
+	return data.origin;
+}
 
 
-module.exports = { setOrigin/*, bookTrip, goOnTrip, getPosition*/ };
+module.exports = { setOrigin/*, bookTrip, goOnTrip*/, getPosition, resetOrigin };
